@@ -10,7 +10,14 @@
 
     <script type="text/javascript" src="../lib/link.js"></script>
     <script type="text/javascript">
-        Link.intercept(null, function(ctx, next) {
+        Link.$get(function(ctx, next) {
+            ctx.data.count = 1;
+            console.log("Link get ctx count: " + ctx.data.count);
+            
+            next();
+            
+        });
+        Link.use(null, function(ctx, next) {
             var route = ctx.route;
             var node = document.querySelector(route || "wtf?");
             if(node) {
@@ -20,13 +27,21 @@
                     node.innerHTML = ctx.value;
                 }
             } else {
+                console.log("Link interceptor dom not found!");
                 next();
             }
+        });
+        Link.$get(function(ctx, next) {
+            ctx.data.count++;
+            console.log("Link get ctx count: " + ctx.data.count);
+            
+            next();
+            
         });
         var data = new Link({
               price: null
             }, {
-              price: ".price"
+              price: "price"
             });
     </script>
 </body>
