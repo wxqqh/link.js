@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" class="price-input" value="fuck">
+    <div id="div" class="price">price</div>
+
+    <script type="text/javascript" src="../lib/link.js"></script>
+    <script type="text/javascript">
+        Link.intercept(null, function(ctx, next) {
+            var route = ctx.route;
+            var node = document.querySelector(route || "wtf?");
+            if(node) {
+                if(ctx.type === "get") {
+                    ctx.value =  node.innerHTML;
+                } else {
+                    node.innerHTML = ctx.value;
+                }
+            } else {
+                next();
+            }
+        });
+        var data = new Link({
+              price: null
+            }, {
+              price: ".price"
+            });
+    </script>
+</body>
+</html>

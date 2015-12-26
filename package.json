@@ -1,0 +1,15 @@
+{
+  "name": "link.js",
+  "version": "0.0.1",
+  "description": "simple two way data binding to HTML and Js Object",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "data-bind",
+    "js"
+  ],
+  "author": "wxqqh@qq.com",
+  "license": "ISC"
+}
