@@ -17,7 +17,7 @@
             next();
             
         });
-        Link.use(null, function(ctx, next) {
+        Link.use(function(ctx, next) {
             var route = ctx.route;
             var node = document.querySelector(route || "wtf?");
             if(node) {
@@ -41,8 +41,8 @@
         var data = new Link({
               price: null
             }, {
-              price: "price"
-            });
+              price: ".price"
+            }, []);
     </script>
 </body>
 </html>
